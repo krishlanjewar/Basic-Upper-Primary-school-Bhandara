@@ -1,0 +1,771 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Basic uchha prathamik shala - Excellence in Education</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: #f8f9fa;
+        }
+
+        /* Header */
+        header {
+            background: linear-gradient(135deg, #2c3e50 0%, #3498db 100%);
+            color: white;
+            padding: 1rem 0;
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .logo-icon {
+            width: 50px;
+            height: 50px;
+            background: rgba(255,255,255,0.2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        .logo h1 {
+            font-size: 1.8rem;
+            font-weight: 700;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            padding: 0.5rem 1rem;
+            border-radius: 25px;
+        }
+
+        nav a:hover, nav a.active {
+            background: rgba(255,255,255,0.2);
+            transform: translateY(-2px);
+        }
+
+        /* Main Content */
+        main {
+            margin-top: 100px;
+            min-height: calc(100vh - 100px);
+        }
+
+        .section {
+            display: none;
+            padding: 4rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section.active {
+            display: block;
+        }
+
+        /* Home Section */
+        
+
+        .hero h2 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+        }
+
+        .highlights {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 4rem;
+        }
+
+        .highlight-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+
+        .highlight-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .highlight-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, #3498db, #2c3e50);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1rem;
+            color: white;
+            font-size: 2rem;
+        }
+
+        /* About Section */
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .about-text h2 {
+            color: #2c3e50;
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .about-text p {
+            font-size: 1.1rem;
+            margin-bottom: 1.5rem;
+            color: #555;
+        }
+
+        .mission-vision {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        .mission-vision h3 {
+            color: #3498db;
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+
+        /* Staff Section */
+        .staff-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .staff-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+
+        .staff-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .staff-avatar {
+            width: 120px;
+            height: 120px;
+            background: linear-gradient(135deg, #3498db, #2c3e50);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1rem;
+            color: white;
+            font-size: 2.5rem;
+            font-weight: bold;
+        }
+
+        .staff-card h3 {
+            color: #2c3e50;
+            margin-bottom: 0.5rem;
+        }
+
+        .staff-subject {
+            color: #3498db;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        /* Events Section */
+        .events-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+        }
+
+        .event-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            margin-bottom: 2rem;
+            border-left: 5px solid #3498db;
+        }
+
+        .event-date {
+            background: #3498db;
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            display: inline-block;
+            margin-bottom: 1rem;
+        }
+
+        .event-card h3 {
+            color: #2c3e50;
+            margin-bottom: 1rem;
+        }
+
+        /* Achievements Section */
+        .achievements-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .achievement-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .achievement-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: linear-gradient(90deg, #f39c12, #e67e22);
+        }
+
+        .achievement-badge {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #f39c12, #e67e22);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1rem;
+            color: white;
+            font-size: 1.5rem;
+        }
+
+        /* Contact Section */
+        .contact-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+        }
+
+        .contact-info {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .contact-icon {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, #3498db, #2c3e50);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.2rem;
+        }
+
+        .contact-form {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: #2c3e50;
+            font-weight: 600;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 1rem;
+            border: 2px solid #e9ecef;
+            border-radius: 10px;
+            font-size: 1rem;
+            transition: border-color 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #3498db;
+        }
+
+        .btn {
+            background: linear-gradient(135deg, #3498db, #2c3e50);
+            color: white;
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 25px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+        }
+
+        .section-title {
+            text-align: center;
+            color: #2c3e50;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+        }
+
+        /* Mobile Responsiveness */
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            nav ul {
+                gap: 1rem;
+            }
+
+            .hero h2 {
+                font-size: 2.5rem;
+            }
+
+            .about-content,
+            .events-container,
+            .contact-container {
+                grid-template-columns: 1fr;
+            }
+
+            .highlights {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <div class="logo">
+                <div class="logo-icon"><a href="#"><img src="#" alt="logo"></a></div>
+                <h1>Basic Uchha prathamic shala </h1>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#" class="nav-link active" data-section="home">Home</a></li>
+                    <li><a href="#" class="nav-link" data-section="about">About Us</a></li>
+                    <li><a href="#" class="nav-link" data-section="staff">Teaching Staff</a></li>
+                    <li><a href="#" class="nav-link" data-section="events">Events</a></li>
+                    <li><a href="#" class="nav-link" data-section="achievements">Achievements</a></li>
+                    <li><a href="#" class="nav-link" data-section="contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <!-- Home Section -->
+        <section id="home" class="section active">
+            <div style="background-image: url('hik.jpeg'); 
+            background-size: cover; 
+            background-repeat: no-repeat; 
+            background-position: center; 
+            width: 80vw;                 
+            height: 80vh; ">
+             <div style="  font-family: 'Georgia', serif;
+            font-size: 30px;
+            font-weight: bold;
+            text-align: center;
+            margin-top: 10vh;
+            background: linear-gradient(
+                to right, 
+                 #138808 20%,    /* Saffron */
+                 #FF9933 40%,   /* White */
+                 #e9ecef 100%   /* Green */ );
+            -webkit-background-clip : text;
+            -webkit-text-fill-color: transparent;
+            padding: 8rem 2rem; 
+            margin: -4rem -2rem 4rem -2rem;">
+                <h2>Welcome to Basic Uchha prathamic shala </h2>
+                <p>Nurturing minds, building futures, and inspiring excellence in every student</p></div>
+            </div>
+            
+            <div class="highlights">
+                <div class="highlight-card">
+                    <div class="highlight-icon">🎓</div>
+                    <h3>Academic Excellence</h3>
+                    <p>Our rigorous curriculum and dedicated faculty ensure every student reaches their full potential with personalized learning approaches.</p>
+                </div>
+                <div class="highlight-card">
+                    <div class="highlight-icon">🏆</div>
+                    <h3>Outstanding Results</h3>
+                    <p>98% university acceptance rate with students consistently achieving top grades in national examinations and competitions.</p>
+                </div>
+                <div class="highlight-card">
+                    <div class="highlight-icon">🌟</div>
+                    <h3>Holistic Development</h3>
+                    <p>Beyond academics, we focus on character building, leadership skills, and extracurricular activities for well-rounded growth.</p>
+                </div>
+                <div>
+                <iframe 
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d800.1402095079227!2d79.65135007044377!3d21.173681354947597!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a2b3f4c8dd93777%3A0xbb0c80b82a119986!2sBasic%20primary%20school%20%2Cbhandara!5e1!3m2!1sen!2sin!4v1748444778836!5m2!1sen!2sin" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </div>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section id="about" class="section">
+            <h2 class="section-title">About Basic Uchha prathamic shala</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <h2>Our Story</h2>
+                    <p>Founded in 1985, Basic Uchha prathamic shala has been a beacon of educational excellence for over three decades. What started as a small institution with just 50 students has grown into a prestigious academy serving over 1,200 students from diverse backgrounds.</p>
+                    <p>Our commitment to fostering critical thinking, creativity, and character has made us one of the region's most respected educational institutions. We believe in preparing students not just for exams, but for life itself.</p>
+                    <p>Located in the heart of the city, our modern campus provides state-of-the-art facilities including science laboratories, computer centers, sports complexes, and creative arts studios.</p>
+                </div>
+                <div class="mission-vision">
+                    <h3>Our Mission</h3>
+                    <p>To provide exceptional education that empowers students to become confident, capable, and caring individuals who contribute positively to society.</p>
+                    
+                    <h3>Our Vision</h3>
+                    <p>To be recognized as a leading educational institution that inspires lifelong learning, innovation, and leadership in our students.</p>
+                    
+                    <h3>Core Values</h3>
+                    <ul>
+                        <li><strong>Excellence:</strong> Striving for the highest standards in all endeavors</li>
+                        <li><strong>Integrity:</strong> Acting with honesty and moral principles</li>
+                        <li><strong>Respect:</strong> Valuing diversity and treating everyone with dignity</li>
+                        <li><strong>Innovation:</strong> Embracing creativity and new ideas</li>
+                        <li><strong>Community:</strong> Building strong relationships and partnerships</li>
+                    </ul>
+                </div>
+            </div>
+            <div style="height: 10px;
+            width: 10px;">
+                <img src="dance.jpg" >
+                <img src="IMG-20190830-WA0153.jpg">
+            </div>
+        </section>
+
+        <!-- Staff Section -->
+        <section id="staff" class="section">
+            <h2 class="section-title">Our Teaching Staff</h2>
+            <div class="staff-grid">
+                <div class="staff-card">
+                    <div class="staff-avatar">MJ</div>
+                    <h3>Dr. Margaret Johnson</h3>
+                    <div class="staff-subject">Principal & Mathematics</div>
+                    <p>Ph.D. in Educational Leadership, 25+ years experience. Specializes in advanced calculus and educational administration. Former university professor with numerous published research papers.</p>
+                </div>
+                <div class="staff-card">
+                    <div class="staff-avatar">RS</div>
+                    <h3>Robert Smith</h3>
+                    <div class="staff-subject">English Literature</div>
+                    <p>M.A. in English Literature, 18 years teaching experience. Expert in classical and contemporary literature. Published poet and creative writing mentor.</p>
+                </div>
+                <div class="staff-card">
+                    <div class="staff-avatar">EC</div>
+                    <h3>Dr. Emily Chen</h3>
+                    <div class="staff-subject">Sciences (Physics & Chemistry)</div>
+                    <p>Ph.D. in Applied Physics, 15 years experience. Former research scientist at national laboratory. Passionate about making complex scientific concepts accessible to students.</p>
+                </div>
+                <div class="staff-card">
+                    <div class="staff-avatar">DW</div>
+                    <h3>David Williams</h3>
+                    <div class="staff-subject">History & Social Studies</div>
+                    <p>M.A. in History, 20 years experience. Specializes in world history and comparative government. Award-winning teacher known for engaging classroom discussions.</p>
+                </div>
+                <div class="staff-card">
+                    <div class="staff-avatar">LA</div>
+                    <h3>Lisa Anderson</h3>
+                    <div class="staff-subject">Arts & Music</div>
+                    <p>B.F.A. in Fine Arts, M.Mus. in Music Education. 12 years experience. Professional artist and musician who has led student performances at national competitions.</p>
+                </div>
+                <div class="staff-card">
+                    <div class="staff-avatar">MT</div>
+                    <h3>Michael Thompson</h3>
+                    <div class="staff-subject">Physical Education & Sports</div>
+                    <p>B.S. in Kinesiology, certified athletic trainer. 16 years experience. Former collegiate athlete who has coached multiple championship teams.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Events Section -->
+        <section id="events" class="section">
+            <h2 class="section-title">School Events</h2>
+            <div class="events-container">
+                <div>
+                    <h3 style="color: #2c3e50; margin-bottom: 2rem;">Upcoming Events</h3>
+                    <div class="event-card">
+                        <div class="event-date">June 15, 2025</div>
+                        <h3>Annual Science Fair</h3>
+                        <p>Students showcase their innovative research projects and experiments. Judged by local scientists and university professors.</p>
+                    </div>
+                    <div class="event-card">
+                        <div class="event-date">June 22, 2025</div>
+                        <h3>Sports Day Championship</h3>
+                        <p>Inter-house athletics competition featuring track and field events, team sports, and special performances by our drill team.</p>
+                    </div>
+                    <div class="event-card">
+                        <div class="event-date">July 8, 2025</div>
+                        <h3>Summer Concert Series</h3>
+                        <p>Musical performances by our talented students including orchestra, choir, and individual showcases in our newly renovated auditorium.</p>
+                    </div>
+                </div>
+                <div>
+                    <h3 style="color: #2c3e50; margin-bottom: 2rem;">Recent Events</h3>
+                    <div class="event-card">
+                        <div class="event-date">May 20, 2025</div>
+                        <h3>Graduation Ceremony 2025</h3>
+                        <p>Celebrated our 150 graduating seniors with a memorable ceremony featuring keynote speaker Dr. Sarah Martinez, renowned educator and author.</p>
+                    </div>
+                    <div class="event-card">
+                        <div class="event-date">May 10, 2025</div>
+                        <h3>International Culture Day</h3>
+                        <p>Students and families shared their diverse cultural heritage through food, music, dance, and traditional costumes from around the world.</p>
+                    </div>
+                    <div class="event-card">
+                        <div class="event-date">April 28, 2025</div>
+                        <h3>Academic Awards Night</h3>
+                        <p>Recognized outstanding academic achievements, perfect attendance, and community service contributions by our exceptional students.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Achievements Section -->
+        <section id="achievements" class="section">
+            <h2 class="section-title">Our Achievements</h2>
+            <div class="achievements-grid">
+                <div class="achievement-card">
+                    <div class="achievement-badge">🏆</div>
+                    <h3>National Mathematics Olympiad</h3>
+                    <p><strong>Gold Medal Winner 2025:</strong> Sarah Kim, Grade 11, secured first place in the national competition, representing our school with distinction among 500+ participants nationwide.</p>
+                </div>
+                <div class="achievement-card">
+                    <div class="achievement-badge">🎯</div>
+                    <h3>Academic Excellence Recognition</h3>
+                    <p><strong>Top 5% Nationally:</strong> Our school ranked in the top 5% of all schools nationally for academic performance, with 98% of students achieving above-average scores in standardized tests.</p>
+                </div>
+                <div class="achievement-card">
+                    <div class="achievement-badge">🌍</div>
+                    <h3>International Science Competition</h3>
+                    <p><strong>Bronze Medal:</strong> Team of three students won bronze in the International Youth Science Fair with their project on renewable energy solutions for rural communities.</p>
+                </div>
+                <div class="achievement-card">
+                    <div class="achievement-badge">📚</div>
+                    <h3>Literacy Excellence Award</h3>
+                    <p><strong>State Recognition:</strong> Received the State Literacy Excellence Award for our innovative reading program that increased student reading comprehension scores by 40%.</p>
+                </div>
+                <div class="achievement-card">
+                    <div class="achievement-badge">🎨</div>
+                    <h3>Arts & Culture Championship</h3>
+                    <p><strong>Regional Winners:</strong> Our drama club won first place in the regional theater competition with their original production "Tomorrow's Promise," written and directed by students.</p>
+                </div>
+                <div class="achievement-card">
+                    <div class="achievement-badge">⚽</div>
+                    <h3>Sports Excellence</h3>
+                    <p><strong>Multiple Championships:</strong> Our sports teams won district championships in soccer, basketball, and swimming, with 12 students receiving athletic scholarships to universities.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="section">
+            <h2 class="section-title">Contact Us</h2>
+            <div class="contact-container">
+                <div class="contact-info">
+                    <h3 style="color: #2c3e50; margin-bottom: 2rem;">Get in Touch</h3>
+                    <div class="contact-item">
+                        <div class="contact-icon">📍</div>
+                        <div>
+                            <h4>Address</h4>
+                            <p>1234 Education Boulevard<br>
+                            Academic District, State 12345<br>
+                            United States</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">📞</div>
+                        <div>
+                            <h4>Phone Numbers</h4>
+                            <p>Main Office: (555) 123-4567<br>
+                            Admissions: (555) 123-4568<br>
+                            Emergency: (555) 123-4569</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">✉️</div>
+                        <div>
+                            <h4>Email Addresses</h4>
+                            <p>General: info@oakwoodacademy.edu<br>
+                            Admissions: admissions@oakwoodacademy.edu<br>
+                            Principal: principal@oakwoodacademy.edu</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">🕐</div>
+                        <div>
+                            <h4>Office Hours</h4>
+                            <p>Monday - Friday: 7:30 AM - 5:00 PM<br>
+                            Saturday: 9:00 AM - 2:00 PM<br>
+                            Sunday: Closed</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="contact-form">
+                    <h3 style="color: #2c3e50; margin-bottom: 2rem;">Send us a Message</h3>
+                    <form>
+                        <div class="form-group">
+                            <label for="name">Full Name</label>
+                            <input type="text" id="name" name="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email Address</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">Phone Number</label>
+                            <input type="tel" id="phone" name="phone">
+                        </div>
+                        <div class="form-group">
+                            <label for="subject">Subject</label>
+                            <input type="text" id="subject" name="subject" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Message</label>
+                            <textarea id="message" name="message" rows="5" required></textarea>
+                        </div>
+                        <button type="submit" class="btn">Send Message</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script>
+        // Navigation functionality
+        const navLinks = document.querySelectorAll('.nav-link');
+        const sections = document.querySelectorAll('.section');
+
+        navLinks.forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                
+                // Remove active class from all links and sections
+                navLinks.forEach(nl => nl.classList.remove('active'));
+                sections.forEach(section => section.classList.remove('active'));
+                
+                // Add active class to clicked link
+                link.classList.add('active');
+                
+                // Show corresponding section
+                const sectionId = link.getAttribute('data-section');
+                document.getElementById(sectionId).classList.add('active');
+            });
+        });
+
+        // Contact form handling
+        document.querySelector('.contact-form form').addEventListener('submit', (e) => {
+            e.preventDefault();
+            alert('Thank you for your message! We will get back to you within 24 hours.');
+        });
+
+        // Smooth scrolling animation for cards
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Observe all cards for animation
+        document.querySelectorAll('.highlight-card, .staff-card, .event-card, .achievement-card').forEach(card => {
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(20px)';
+            card.style.transition = 'all 0.6s ease';
+            observer.observe(card);
+        });
+    </script>
+</body>
+</html>
